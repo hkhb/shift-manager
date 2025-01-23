@@ -9,17 +9,17 @@ datasource db {
 
 model Users {
   id                    Int       @id @default(autoincrement())
-  first_name            String
-  last_name             String
+  firstName             String
+  lastName              String
   email                 String    @unique
   age                   Int?
   gender                String?
   address               String?
-  phone_number          Int?
-  is_deleted            Boolean   @default(false)
-  is_admin              Boolean   @default(false)
+  phoneNumber          Int?
+  isDeleted             Boolean   @default(false)
+  isAdmin               Boolean   @default(false)
   password              String
-  is_initinal_password  Boolean   @default(false)
+  isInitinalPassword    Boolean   @default(false)
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
 }

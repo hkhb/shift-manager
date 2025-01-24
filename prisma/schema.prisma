@@ -15,11 +15,24 @@ model Users {
   age                   Int?
   gender                String?
   address               String?
-  phoneNumber          Int?
+  phoneNumber           Int?
   isDeleted             Boolean   @default(false)
   isAdmin               Boolean   @default(false)
   password              String
   isInitinalPassword    Boolean   @default(false)
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
+}
+
+model Pays {
+  id             Int       @id @default(autoincrement())
+  userId         Int       // 外部キー
+  isDeleted      Boolean   @default(false)
+  employmentType String
+  fixedSalary    Int?
+  hourWage       Int?
+  overtimePay    Int?
+  paymentDate    DateTime?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
 }

@@ -130,15 +130,16 @@ model TimeRecord {
 }
 
 model MonthlyWorkHour {
-  id             Int       @id @default(autoincrement())
-  user           User      @relation(fields: [userId], references: [id])
-  userId         Int       @map("user_id")
-  isDeleted      Boolean   @default(false) @map("is_deleted")
-  yearMonth      String    @map("year_month")
-  totalWorkHours Float     @map("total_work_hours")
-  monthlySalary  Int       @default(0) @map("monthly_salary")
-  createdAt      DateTime  @default(now()) @map("created_at")
-  updatedAt      DateTime  @updatedAt @map("updated_at")
+  id                  Int       @id @default(autoincrement())
+  user                User      @relation(fields: [userId], references: [id])
+  userId              Int       @map("user_id")
+  isDeleted           Boolean   @default(false) @map("is_deleted")
+  clockInDatetime     DateTime  @map("year_month")
+  clockOutDatetime    DateTime  @map("total_work_hours")
+  breakTime           Int       @default(0) @map("monthly_salary")
+  comment             String
+  createdAt           DateTime  @default(now()) @map("created_at")
+  updatedAt           DateTime  @updatedAt @map("updated_at")
 
   @@map("monthly_work_hours")
 }

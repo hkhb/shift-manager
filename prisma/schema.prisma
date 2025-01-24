@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
+model User {
   id                    Int       @id @default(autoincrement())
   firstName             String
   lastName              String
@@ -22,9 +22,11 @@ model Users {
   isInitinalPassword    Boolean   @default(false)
   createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
+
+  @@map("users")
 }
 
-model Pays {
+model Pay {
   id             Int       @id @default(autoincrement())
   userId         Int       // 外部キー
   isDeleted      Boolean   @default(false)
@@ -35,10 +37,13 @@ model Pays {
   paymentDate    DateTime?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
+
+  @@map("pays")
 }
 
-model Files {
+model File {
   id          Int       @id @default(autoincrement())
+  
   userId      Int       // 外部キー
   isDeleted   Boolean   @default(false)
   title       String
@@ -52,4 +57,6 @@ model Files {
   sender      Int
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+
+  @@map("files")
 }

@@ -1,5 +1,25 @@
 -- CreateTable
-CREATE TABLE "Pays" (
+CREATE TABLE "users" (
+    "id" SERIAL NOT NULL,
+    "firstName" TEXT NOT NULL,
+    "lastName" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "age" INTEGER,
+    "gender" TEXT,
+    "address" TEXT,
+    "phoneNumber" INTEGER,
+    "isDeleted" BOOLEAN NOT NULL DEFAULT false,
+    "isAdmin" BOOLEAN NOT NULL DEFAULT false,
+    "password" TEXT NOT NULL,
+    "isInitinalPassword" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "users_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "pays" (
     "id" SERIAL NOT NULL,
     "userId" INTEGER NOT NULL,
     "isDeleted" BOOLEAN NOT NULL DEFAULT false,
@@ -11,11 +31,11 @@ CREATE TABLE "Pays" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Pays_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "pays_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Files" (
+CREATE TABLE "files" (
     "id" SERIAL NOT NULL,
     "userId" INTEGER NOT NULL,
     "isDeleted" BOOLEAN NOT NULL DEFAULT false,
@@ -31,5 +51,8 @@ CREATE TABLE "Files" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "Files_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "files_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");

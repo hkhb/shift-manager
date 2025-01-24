@@ -65,7 +65,7 @@ model File {
  fileType    String?   @map("file_type")
  status      Status    @relation(fields: [statusId], references: [id])
  statusId    Int       @map("status_id")
- sendDate    DateTime  @map("send_date")
+ sendAt      DateTime  @map("send_at")
  receiver    User      @relation("receiver", fields: [receiverId], references: [id])
  receiverId  Int       @map("receiver_id")
  createdAt   DateTime  @default(now()) @map("created_at")
@@ -105,7 +105,7 @@ model Message {
  isDeleted      Boolean   @default(false) @map("is_deleted")
  file           File      @relation(fields: [fileId], references: [id])
  fileId         Int       @map("file_id")
- sendDate       DateTime  @map("send_date")
+ sendAt         DateTime  @map("send_at")
  receiver       User      @relation("receiver", fields: [receiverId], references: [id])
  receiverId     Int       @map("receiver_id")
  content        String

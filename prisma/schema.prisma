@@ -36,3 +36,20 @@ model Pays {
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
 }
+
+model Files {
+  id          Int       @id @default(autoincrement())
+  userId      Int       // 外部キー
+  isDeleted   Boolean   @default(false)
+  title       String
+  tagId       Int
+  deadline    DateTime?
+  filePath    String?
+  fileSize    Int?
+  fileType    String?
+  statusId    Int
+  sendDate    DateTime
+  sender      Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}

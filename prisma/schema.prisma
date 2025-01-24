@@ -15,7 +15,7 @@ model Users {
   age                   Int?
   gender                String?
   address               String?
-  phoneNumber          Int?
+  phoneNumber           Int?
   isDeleted             Boolean   @default(false)
   isAdmin               Boolean   @default(false)
   password              String

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>menu</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<style>
+  .container {
+    width: 800px;
+    margin: 50px;
+    border: 1px black solid;
+    background-color: rgb(222, 246, 246);
+  }
+  .switch-mode {
+    display: flex;
+    a {
+      width: 50%;
+      text-align: center;
+    }
+  }
+  .switch-user {
+    border-top: 1px black solid;
+    border-left: 1px black solid;
+    border-right: 1px black solid;
+  }
+  .switch-pays {
+    background-color: rgb(174, 254, 197);
+    border: 1px black solid;
+  }
+  h1 {
+    padding: 10px;
+  }
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    td {
+      padding: 10px;
+      max-width: 300px;
+    }
+  }
+</style>
+<body>
+  <div class = "container">
+    <div class = "switch-mode" >
+      <a class = "switch-user" href="#">ユーザー詳細</a>
+      <a class = "switch-pays" href="#">支払い詳細</a>
+    </div>
+    <h1>ユーザー詳細</h1>
+    <div class = "user-info" >
+      <div class ="edit-link">
+        <a href="#">編集</a>
+      </div>
+      <table class="user-info">
+        <tr>
+          <td class = "label">名前</td>
+          <td class = "value">{{ user.firstName }} {{ user.lastName }}</td>
+        </tr>
+        <tr>
+          <td class = "label">年齢</td>
+          <td class = "value">{{ user.age }}</td>
+        </tr>
+        <tr>
+          <td class = "label">性別</td>
+          <td class = "value">{{ user.gender }}</td>
+        </tr>
+        <tr>
+          <td class = "label">雇用形態</td>
+          <td class = "value">{{ pays.employment_type }}</td>
+        </tr>
+        <tr>
+          <td class = "label">住所</td>
+          <td class = "value">{{ user.address }}</td>
+        </tr>
+        
+      </table>
+  </div>
+  </div>
+</body>

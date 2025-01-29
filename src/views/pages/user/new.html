@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>menu</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<style>
+  .container {
+    width: 800px;
+    margin: 50px;
+    border: 1px black solid;
+    background-color: rgb(222, 246, 246);
+  }
+  .switch-mode {
+    display: flex;
+    a {
+      width: 50%;
+      text-align: center;
+    }
+  }
+  .switch-user {
+    border-top: 1px black solid;
+    border-left: 1px black solid;
+    border-right: 1px black solid;
+  }
+  .switch-user:hover {
+    background-color: rgb(126, 246, 246);
+  }
+  .switch-pays {
+    background-color: rgb(174, 254, 197);
+    border: 1px black solid;
+  }
+  .switch-pays:hover {
+    background-color: rgb(125, 251, 161);
+  }
+  h1 {
+    padding: 10px;
+  }
+  .user-new {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    td {
+      padding: 10px;
+      max-width: 300px;
+    }
+  }
+  #age {
+    text-align: center;
+  }
+  #address {
+    width: 100%;
+    height: 50px;
+  }
+.button-filed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3px;
+  margin: 10px;
+  justify-content: center;
+  justify-content: space-around; 
+}
+button {
+    width: 100px;
+  }
+button:hover {
+  background-color: rgb(107, 196, 247);
+}
+</style>
+<body>
+  <div class = "container">
+    <div class = "switch-mode" >
+      <a class = "switch-user" href="#">ユーザー作成</a>
+      <a class = "switch-pays" href="#">支払い作成</a>
+    </div>
+    <h1>ユーザー作成</h1>
+        <table class="user-new">
+          <tr>
+            <td><label>名前</label></td>
+            <td>
+              <input type="text" id="firstName" name="firstName" ></input>
+              <input type="text" id="lastName" name="lastName" ></input>
+            </td>
+          </tr>
+          <tr>
+            <td><label>年齢</label></td>
+            <td><input type="number" id="age" name="age"></input></td>
+          </tr>
+          <tr>
+            <td><label>性別</label></td>
+            <td>
+              <input type="radio" id="male" name="gender" value="male">
+              <label for="male">男性</label>
+              <input type="radio" id="female" name="gender" value="female">
+              <label for="female">女性</label>
+            </td>
+          </tr>
+          <tr>
+            <td><label>雇用形態</label></td>
+            <td><input type="text" id="employment_type" name="employment_type"></input></td>
+          </tr>
+          <tr>
+            <td><label>住所</label></td>
+            <td>
+              <textarea id="address" name="address" maxlength="60" rows="2" cols="30"></textarea>
+            </td>
+          </tr>
+        </table>
+        <div class="button-filed">
+          <a href="#"><button>戻る</button></a>
+          <button type="submit" class="button">登録</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>

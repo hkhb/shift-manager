@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>pays-new</title>
+</head>
+<style>
+  .container {
+    width: 800px;
+    margin: 50px;
+    border: 1px black solid;
+    background-color: rgb(174, 254, 197);
+  }
+  .switch-wapper {
+    display: flex;
+    a {
+      width: 50%;
+      text-align: center;
+    }
+  }
+  .switch-user {
+    border: 1px black solid;
+    background-color: rgb(222, 246, 246);
+  }
+  .switch-pays {
+    background-color: rgb(174, 254, 197);
+    border-top: 1px black solid;
+    border-left: 1px black solid;
+    border-right: 1px black solid;
+  }
+  h1 {
+    padding: 10px;
+  }
+  .edit-link {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .pays-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    td {
+      padding: 10px;
+      max-width: 300px;
+    }
+  }
+  .button-field {
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    margin: 10px; 
+    justify-content: space-around;
+    }
+    button {
+        width: 100px;
+      }
+    button:hover {
+      background-color: rgb(107, 196, 247);
+    }
+</style>
+<body>
+  <div class = "container">
+    <div class = "switch-wapper" >
+      <a class = "switch-user" href="#">ユーザー作成</a>
+      <a class = "switch-pays" href="#">支払い作成</a>
+    </div>
+    <h1>支払い作成</h1>
+    <form>
+      <table class="pays-info">
+        <tr>
+          <td><label for="employmentType">給与形態</label></td>
+          <td>
+            <input type="text" id="employment_type" name="employment_type" value="{{ pays.employmentType }}">
+          </td>
+        </tr>
+        <tr>
+          <td><label for="salary">基本給</label></td>
+          <td>
+            <input type="text" id="salary" name="salary" value="{{ pays.salary }}">
+          </td>
+        </tr>
+        <tr>
+          <td><label for="hourWage">時給</label></td>
+          <td>
+            <input type="text" id="hourWage" name="hourWage" value="{{ pays.hourWage }}">
+          </td>
+        </tr>
+        <tr>
+          <td><label for="monthlyWorkHours">仮計算額</label></td>
+          <td>
+            <input type="text" id="monthlyWorkHours" name="monthlyWorkHours" value="{{ pays.monthlyWorkHours }}">
+          </td>
+        </tr>
+        <tr>
+          <td><label for="overtimePay">残業代</label></td>
+          <td>
+            <input type="text" id="overtimePay" name="overtimePay" value="{{ overtimePay }}">
+          </td>
+        </tr>
+      </table>
+      <div class="button-field">
+        <a href="#"><button type="button">戻る</button></a>
+        <button type="submit">作成</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

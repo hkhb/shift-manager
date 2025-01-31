@@ -28,15 +28,21 @@
   .switch-pays {
     background-color: rgb(174, 254, 197);
     border: 1px black solid;
+    border-bottom: 2px black solid;
   }
   h1 {
-    padding: 10px;
+    margin: 30px auto 30px 20px;
+  }
+  .edit-link {
+    display: flex;
+    justify-content: center;
   }
   .user-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
     td {
       padding: 10px;
       max-width: 300px;
@@ -50,33 +56,32 @@
       <a class = "switch-pays" href="#">支払い詳細</a>
     </div>
     <h1>ユーザー詳細</h1>
-    <div class = "user-info" >
+    <div class = "user-show" >
       <div class ="edit-link">
         <a href="#">編集</a>
       </div>
       <table class="user-info">
         <tr>
-          <td class = "label">名前</td>
-          <td class = "value">{{ user.firstName }} {{ user.lastName }}</td>
+          <td>名前</td>
+          <td>{{ user.firstName }} {{ user.lastName }}</td>
         </tr>
         <tr>
-          <td class = "label">年齢</td>
-          <td class = "value">{{ user.age }}</td>
+          <td>年齢</td>
+          <td>{{ user.age }}</td>
         </tr>
         <tr>
-          <td class = "label">性別</td>
-          <td class = "value">{{ user.gender }}</td>
+          <td>性別</td>
+          <td>{{ user.gender }}</td>
         </tr>
         <tr>
-          <td class = "label">雇用形態</td>
-          <td class = "value">{{ pays.employment_type }}</td>
+          <td>雇用形態</td>
+          <td>{{ pays.employment_type }}</td>
         </tr>
         <tr>
-          <td class = "label">住所</td>
-          <td class = "value">{{ user.address }}</td>
+          <td>住所</td>
+          <td>{{ user.address }}</td>
         </tr>
-        
       </table>
-  </div>
+    </div>
   </div>
 </body>

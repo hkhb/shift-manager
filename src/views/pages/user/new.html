@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset='utf-8'>
-  <title>menu</title>
+  <title>user-new</title>
   <meta name='viewport' content='width=device-width, initial-scale=1'>
   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
@@ -25,10 +25,16 @@
     border-left: 1px black solid;
     border-right: 1px black solid;
   }
+  .switch-user:hover {
+    background-color: rgb(126, 246, 246);
+  }
   .switch-pays {
     background-color: rgb(174, 254, 197);
     border: 1px black solid;
     border-bottom: 2px black solid;
+  }
+  .switch-pays:hover {
+    background-color: rgb(125, 251, 161);
   }
   h1 {
     margin: 30px auto 30px 20px;
@@ -73,7 +79,7 @@
           </tr>
           <tr>
             <td><label>年齢</label></td>
-            <td><input type="number" id="age" name="age"></input></td>
+            <td><input type="number" id="age" name="age" min="0" max="200"></input></td>
           </tr>
           <tr>
             <td><label>性別</label></td>

@@ -10,7 +10,7 @@
     width: 800px;
     margin: 50px;
     border: 1px black solid;
-    background-color: rgb(174, 254, 197);
+    background-color: rgb(218, 253, 228);
   }
   .switch-wapper {
     display: flex;
@@ -24,19 +24,20 @@
     background-color: rgb(222, 246, 246);
   }
   .switch-pays {
-    background-color: rgb(174, 254, 197);
+    background-color: rgb(192, 253, 209);
     border-top: 1px black solid;
     border-left: 1px black solid;
     border-right: 1px black solid;
   }
   h1 {
-    padding: 10px;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-bottom: 30px;
+    margin-left: 20px;
   }
   .edit-link {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
   }
   .pays-info {
     display: flex;
@@ -47,6 +48,13 @@
       padding: 10px;
       max-width: 300px;
     }
+  }
+
+  .previus-payment {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 50px;
   }
 </style>
 <body>
@@ -61,26 +69,29 @@
     </div>
     <table class="pays-info">
       <tr>
-        <td class="label">給与形態</td>
-        <td class="value">{{ pays.employment_type }}</td>
+        <td>給与形態</td>
+        <td>{{ pays.employment_type }}</td>
       </tr>
       <tr>
-        <td class="label">基本給</td>
-        <td class="value">{{ pays.salary }}</td>
+        <td>基本給</td>
+        <td>{{ pays.salary }}</td>
       </tr>
       <tr>
-        <td class="label">時給</td>
-        <td class="value">{{ pays.hourWage }}</td>
+        <td>時給</td>
+        <td>{{ pays.hourWage }}</td>
       </tr>
       <tr>
-        <td class="label">仮計算額</td>
-        <td class="value">{{ pays.monthlyWorkHours }}</td>
+        <td>仮計算額</td>
+        <td>{{ pays.monthlyWorkHours }}</td>
       </tr>
       <tr>
-        <td class="label">残業代</td>
-        <td class="value">{{ overtimePay }}</td>
+        <td>残業代</td>
+        <td>{{ pays.overtimePay }}</td>
       </tr>
     </table>
+    <div class="previus-payment">
+      <a href="#">過去の支給額</a>
+    </div>
   </div>
   
 </body>

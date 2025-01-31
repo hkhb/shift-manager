@@ -10,7 +10,7 @@
     width: 800px;
     margin: 50px;
     border: 1px black solid;
-    background-color: rgb(174, 254, 197);
+    background-color: rgb(218, 253, 228);
   }
   .switch-wapper {
     display: flex;
@@ -21,22 +21,21 @@
   }
   .switch-user {
     border: 1px black solid;
+    border-bottom: 2px black solid;
     background-color: rgb(222, 246, 246);
   }
   .switch-pays {
-    background-color: rgb(174, 254, 197);
+    background-color: rgb(192, 253, 209);
     border-top: 1px black solid;
     border-left: 1px black solid;
     border-right: 1px black solid;
   }
   h1 {
-    padding: 10px;
+    margin: 30px auto 30px 20px;
   }
   .edit-link {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
   }
   .pays-info {
     display: flex;
@@ -52,7 +51,8 @@
     display: flex;
     align-items: center;
     padding: 3px;
-    margin: 10px; 
+    margin: 10px;
+    margin-bottom: 50px;
     justify-content: space-around;
     }
     button {
@@ -63,10 +63,10 @@
     }
 </style>
 <body>
-  <div class = "container">
-    <div class = "switch-wapper" >
-      <a class = "switch-user" href="#">ユーザー作成</a>
-      <a class = "switch-pays" href="#">支払い作成</a>
+  <div class="container">
+    <div class="switch-wapper" >
+      <a class="switch-user" href="#">ユーザー情報</a>
+      <a class="switch-pays" href="#">支払い情報</a>
     </div>
     <h1>支払い情報変更</h1>
     <form>
@@ -74,7 +74,7 @@
         <tr>
           <td><label for="employmentType">給与形態</label></td>
           <td>
-            <input type="text" id="employment_type" name="employment_type" value="{{ pays.employmentType }}">
+            <input type="text" id="employmentType" name="employment_type" value="{{ pays.employmentType }}">
           </td>
         </tr>
         <tr>

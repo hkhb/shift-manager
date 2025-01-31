@@ -25,62 +25,47 @@
     border-left: 1px black solid;
     border-right: 1px black solid;
   }
-  .switch-user:hover {
-    background-color: rgb(126, 246, 246);
-  }
   .switch-pays {
     background-color: rgb(174, 254, 197);
     border: 1px black solid;
-  }
-  .switch-pays:hover {
-    background-color: rgb(125, 251, 161);
+    border-bottom: 2px black solid;
   }
   h1 {
-    padding: 10px;
+    margin: 30px auto 30px 20px;
   }
-  .user-new {
+  .user-info {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 50px;
     td {
       padding: 10px;
       max-width: 300px;
     }
   }
-  #age {
-    text-align: center;
+  .button-field {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 50px;
   }
-  #address {
-    width: 100%;
-    height: 50px;
-  }
-.button-filed {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 3px;
-  margin: 10px;
-  justify-content: center;
-  justify-content: space-around; 
-}
-button {
+  button {
     width: 100px;
+    }
+  button:hover {
+    background-color: rgb(107, 196, 247);
   }
-button:hover {
-  background-color: rgb(107, 196, 247);
-}
 </style>
 <body>
   <div class = "container">
     <div class = "switch-mode" >
-      <a class = "switch-user" href="#">ユーザー作成</a>
-      <a class = "switch-pays" href="#">支払い作成</a>
+      <a class = "switch-user" href="#">ユーザー情報作成</a>
+      <a class = "switch-pays" href="#">支払い情報作成</a>
     </div>
-    <h1>ユーザー作成</h1>
-        <table class="user-new">
+    <h1>ユーザー情報作成</h1>
+        <table class="user-info">
           <tr>
-            <td><label>名前</label></td>
+            <td><label for="firstName, lastName" >名前</label></td>
             <td>
               <input type="text" id="firstName" name="firstName" ></input>
               <input type="text" id="lastName" name="lastName" ></input>
@@ -110,9 +95,9 @@ button:hover {
             </td>
           </tr>
         </table>
-        <div class="button-filed">
+        <div class="button-field">
           <a href="#"><button>戻る</button></a>
-          <button type="submit" class="button">登録</button>
+          <button type="submit" class="button">作成</button>
         </div>
       </form>
     </div>

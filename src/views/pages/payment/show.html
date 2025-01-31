@@ -21,6 +21,7 @@
   }
   .switch-user {
     border: 1px black solid;
+    border-bottom: 2px black solid;
     background-color: rgb(222, 246, 246);
   }
   .switch-pays {
@@ -30,10 +31,7 @@
     border-right: 1px black solid;
   }
   h1 {
-    margin-top: 30px;
-    margin-right: auto;
-    margin-bottom: 30px;
-    margin-left: 20px;
+    margin: 30px auto 30px 20px;
   }
   .edit-link {
     display: flex;
@@ -49,13 +47,25 @@
       max-width: 300px;
     }
   }
-
-  .previus-payment {
+  .button-field {
     display: flex;
-    justify-content: center;
-    margin-top: 10px;
+    align-items: center;
+    padding: 3px;
+    margin: 10px;
     margin-bottom: 50px;
-  }
+    justify-content: space-around;
+    }
+    button {
+        width: 100px;
+      }
+    button:hover {
+      background-color: rgb(107, 196, 247);
+    }
+    .previus-payment {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+    }
 </style>
 <body>
   <div class = "container">
@@ -63,14 +73,14 @@
       <a class = "switch-user" href="#">ユーザー詳細</a>
       <a class = "switch-pays" href="#">支払い詳細</a>
     </div>
-    <h1>支払い詳細</h1>
+    <h1>支払い情報詳細</h1>
     <div class="edit-link">
       <a href="#">編集</a>
     </div>
     <table class="pays-info">
       <tr>
         <td>給与形態</td>
-        <td>{{ pays.employment_type }}</td>
+        <td>{{ pays.employmentType }}</td>
       </tr>
       <tr>
         <td>基本給</td>

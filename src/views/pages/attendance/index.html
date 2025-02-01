@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>attendance-index</title>
+</head>
+<style>
+  .container {
+    width: 800px;
+    padding: 50px;
+    background-color: rgb(222, 246, 246);
+  }
+  h1 {
+    margin: 30px auto 30px 20px;
+  }
+  .search-field {
+    margin: 30px auto 30px 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  table {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  tbody {
+        background-color: rgb(112, 112, 113);
+  }
+  th {
+    max-width: 200px;
+    background-color: azure;
+    padding: 5px;
+    min-width: 100px;
+  }
+  button {
+    width: 100px;
+    }
+  button:hover {
+    background-color: rgb(107, 196, 247);
+  }
+</style>
+<body>
+  <div class="container">
+    <h1>勤怠一覧管理</h1>
+    <div class="search-field">
+      <form action="#">
+        <input type="search">
+        <button type="submit">検索</button>
+      </form>
+    </div>
+    <table>
+      <tbody>
+        <tr>
+          <th>名前</th>
+          <th>総労働時間/m</th>
+          <th>契約</th>
+          <th>管理者</th>
+        </tr>
+        <tr>
+          <th><a href="#">山田　太郎</a></th>
+          <th>30</th>
+          <th>業務委託</th>
+          <th>-</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

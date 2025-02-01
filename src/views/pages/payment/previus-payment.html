@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>previus-payment</title>
+</head>
+<style>
+  .container {
+    width: 800px;
+    margin: 50px;
+    background-color: rgb(218, 253, 228);
+  }
+  h1 {
+    margin: 30px auto 30px 20px;
+  }
+  .top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  table {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    width: auto;
+  }
+  th {
+    max-width: 200px;
+    background-color: azure;
+    border-bottom: 1px gray solid;
+    padding: 5px;
+  }
+  .button-field {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 50px;
+  }
+  button {
+    width: 100px;
+    }
+  button:hover {
+    background-color: rgb(107, 196, 247);
+  }
+</style>
+<body>
+  <div class="container">
+    <h1>過去の支給額</h1>
+    <table>
+      <tr>
+        <th>年月</th>
+        <th>金額/m</th>
+        <th>労働時間/h</th>
+        <th>時給/h</th>
+        <th>基本給/m</th>
+      </tr>
+      <tr>
+        <!-- <th>{{ MonthlyWorkHours.yearMonth }}</th> -->
+        <!-- <th>{{ MonthlyWorkHours.totalWorkHours }}</th> -->
+        <!-- <th>{{ MonthlyWorkHours.monthlySalary }}</th> -->
+        <!-- <th>{{ pays.hourWage }}</th> -->
+        <!-- <th>{{ pays.fixedSalary }}</th> -->
+         <th>202501</th>
+         <th>90000</th>
+         <th>30</th>
+         <th>3000</th>
+         <th>200000</th>
+      </tr>
+    </table>
+    <div class="button-field">
+      <a href="#"><button>戻る</button></a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>attendance-new</title>
+</head>
+<style>
+  .container {
+    width: 800px;
+    padding: 50px;
+    background-color: rgb(222, 246, 246);
+  }
+  h1 {
+    margin: 30px auto 30px 20px;
+  }
+  table {
+    margin: auto;
+    font-size: 25px;
+  }
+  td {
+    text-align: center;
+    padding: 10px;
+  }
+  h3 {
+    text-align: center;
+  }
+  .commet-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+    textarea {
+      text-align: center;
+      width: 300px;
+      height: 50px;
+      white-space: normal;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+  }
+  .links-wapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    justify-content: space-around;
+  }
+  button {
+    width: 100px;
+    }
+  button:hover {
+    background-color: rgb(107, 196, 247);
+  }
+</style>
+<body>
+  <div class="container">
+    <h1>勤怠入力</h1>
+    <div>
+      <form action="#">
+        <table>
+          <thead>
+            <tr>
+              <th>出勤時刻</th>
+              <th>退勤時刻</th>
+              <th>休憩時刻</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input type="datetime-local" name="clockInDatetime">
+              </td>
+              <td>
+                <input type="datetime-local" name="clockOutDatetime">
+              </td>
+              <td>
+                <input type="number"  min="0" max="1440" name="breakTime">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+          <div class="commet-field">
+            <h3>備考</h3>
+            <textarea name="commet"></textarea>
+          </div>
+          <div class="links-wapper">
+            <button onclick="history.back()" type="button" class="back-button">
+              戻る
+            </button>
+            <button type="submit" class="submit-button">出勤</button>
+          </div>
+      </form>
+    </div>
+  </div>
+  
+</body>
+</html>

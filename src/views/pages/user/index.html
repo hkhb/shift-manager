@@ -27,25 +27,27 @@
   table {
     background-color: rgb(112, 112, 113);
   }
-  th {
+  th, td {
     max-width: 200px;
+    min-width: 100px;
     background-color: azure;
+    text-align: center;
   }
 </style>
-<div class = "container">
+<div class="container">
   <body>
     <h1>勤怠管理</h1>
     <div class="top">
       <form action="">
           <label for="name"></label>
-          <input type = "text" id = "name" name = "name"></input>
-          <button type = "submit" > 検索 </button>
+          <input type="text" id="name" name="name">
+          <button type="submit" > 検索 </button>
       </form>
-      <div class = "add-user-button" >
-        <a href = "#" class = "user-add-link" >ユーザー作成</a>
+      <div class="add-user-button" >
+        <a href="#" class="user-add-link" >ユーザー作成</a>
       </div>
     </div>
-    <div class = "user-list" >
+    <div class="user-list" >
       <table>
         <thead>
           <tr>
@@ -56,15 +58,14 @@
           </tr>
         </thead>
         <tbody>
-
           <tr>
-            <th>{{ user.firstName }} {{ user.lastName }} </th>
-            <th>{{ if this.isAdmin }}管理者
+            <td>{{ user.firstName }} {{ user.lastName }} </td>
+            <td>{{ if this.isAdmin }}管理者
               {{ else }}-
               {{ /if }}
-            </th>
-            <th><a href="#">リセット</a></th>
-            <th><a href="#">削除</a></th>
+            </td>
+            <td><a href="#">リセット</a></td>
+            <td><a href="#">削除</a></td>
           </tr>
         </tbody>     
       </table>

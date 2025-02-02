@@ -1,1 +1,6 @@
+# 環境変数
 .env
+
+# コンパイル関連
+node_modules/
+dist/

@@ -50,7 +50,7 @@
       max-width: 300px;
     }
   }
-  .button-field {
+  .submit-back-buttons {
     display: flex;
     justify-content: space-around;
     margin-bottom: 50px;
@@ -63,26 +63,26 @@
   }
 </style>
 <body>
-  <div class = "container">
-    <div class = "switch-mode" >
-      <a class = "switch-user" href="#">ユーザー情報作成</a>
-      <a class = "switch-pays" href="#">支払い情報作成</a>
+  <div class="container">
+    <div class="switch-mode" >
+      <a class="switch-user" href="#">ユーザー情報作成</a>
+      <a class="switch-pays" href="#">支払い情報作成</a>
     </div>
     <h1>ユーザー情報作成</h1>
         <table class="user-info">
           <tr>
-            <td><label for="firstName, lastName" >名前</label></td>
+            <th><label for="firstName" >名前</label></th>
             <td>
               <input type="text" id="firstName" name="firstName" ></input>
               <input type="text" id="lastName" name="lastName" ></input>
             </td>
           </tr>
           <tr>
-            <td><label>年齢</label></td>
+            <th><label for="age">年齢</label></th>
             <td><input type="number" id="age" name="age" min="0" max="200"></input></td>
           </tr>
           <tr>
-            <td><label>性別</label></td>
+            <th><label>性別</label></th>
             <td>
               <input type="radio" id="male" name="gender" value="male">
               <label for="male">男性</label>
@@ -91,20 +91,21 @@
             </td>
           </tr>
           <tr>
-            <td><label>雇用形態</label></td>
-            <td><input type="text" id="employment_type" name="employment_type"></input></td>
+            <th><label for="employmentType">雇用形態</label></th>
+            <td><input type="text" id="employmentType" name="employmentType"></input></td>
           </tr>
           <tr>
-            <td><label>住所</label></td>
+            <th><label for="address">住所</label></th>
             <td>
               <textarea id="address" name="address" maxlength="60" rows="2" cols="30"></textarea>
             </td>
           </tr>
         </table>
-        <div class="button-field">
-          <a href="#"><button>戻る</button></a>
-          <button type="submit" class="button">作成</button>
-        </div>
+        <div class="submit-back-buttons">
+          <button onclick="history.back()" type="button" class="back-button">
+            戻る
+          </button>
+          <button type="submit" class="button">変更</button>
       </form>
     </div>
   </div>

@@ -56,35 +56,35 @@
   }
 </style>
 <body>
-  <div class = "container">
-    <div class = "switch-mode" >
-      <a class = "switch-user" href="#">ユーザー情報詳細</a>
-      <a class = "switch-pays" href="#">支払い情報詳細</a>
+  <div class="container">
+    <div class="switch-mode" >
+      <a class="switch-user" href="#">ユーザー情報詳細</a>
+      <a class="switch-pays" href="#">支払い情報詳細</a>
     </div>
     <h1>ユーザー情報詳細</h1>
-    <div class = "user-show" >
+    <div class="user-show" >
       <div class ="edit-link">
         <a href="#">編集</a>
       </div>
       <table class="user-info">
         <tr>
-          <td>名前</td>
+          <th>名前</th>
           <td>{{ user.firstName }} {{ user.lastName }}</td>
         </tr>
         <tr>
-          <td>年齢</td>
+          <th>年齢</th>
           <td>{{ user.age }}</td>
         </tr>
         <tr>
-          <td>性別</td>
+          <th>性別</th>
           <td>{{ user.gender }}</td>
         </tr>
         <tr>
-          <td>雇用形態</td>
-          <td>{{ pays.employment_type }}</td>
+          <th>雇用形態</th>
+          <td>{{ pays.employmentType }}</td>
         </tr>
         <tr>
-          <td>住所</td>
+          <th>住所</th>
           <td>{{ user.address }}</td>
         </tr>
       </table>

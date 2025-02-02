@@ -27,16 +27,16 @@
     margin-bottom: 50px;
     width: auto;
   }
-  th {
+  th, td {
     max-width: 200px;
     background-color: azure;
     border-bottom: 1px gray solid;
     padding: 5px;
   }
-  .button-field {
+  .back-button {
     display: flex;
     justify-content: space-around;
-    padding-bottom: 50px;
+    margin-bottom: 50px;
   }
   button {
     width: 100px;
@@ -62,15 +62,17 @@
         <!-- <th>{{ MonthlyWorkHours.monthlySalary }}</th> -->
         <!-- <th>{{ pays.hourWage }}</th> -->
         <!-- <th>{{ pays.fixedSalary }}</th> -->
-         <th>202501</th>
-         <th>90000</th>
-         <th>30</th>
-         <th>3000</th>
-         <th>200000</th>
+         <td>202501</td>
+         <td>90000</td>
+         <td>30</td>
+         <td>3000</td>
+         <td>200000</td>
       </tr>
     </table>
-    <div class="button-field">
-      <a href="#"><button>戻る</button></a>
+    <div class="back-button">
+      <button onclick="history.back()" type="button" class="back-button">
+        戻る
+      </button>
     </div>
   </div>
 </body>

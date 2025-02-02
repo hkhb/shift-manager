@@ -53,7 +53,7 @@
       max-width: 300px;
     }
   }
-  .button-field {
+  .back-submit-buttons {
     display: flex;
     align-items: center;
     padding: 3px;
@@ -78,38 +78,40 @@
     <form>
       <table class="pays-info">
         <tr>
-          <td><label for="employmentType">給与形態</label></td>
+          <th><label for="employmentType">給与形態</label></th>
           <td>
             <input type="text" id="employmentType" name="employment_type" value="{{ pays.employmentType }}">
           </td>
         </tr>
         <tr>
-          <td><label for="salary">基本給</label></td>
+          <th><label for="salary">基本給</label></th>
           <td>
             <input type="text" id="salary" name="salary" value="{{ pays.salary }}">
           </td>
         </tr>
         <tr>
-          <td><label for="hourWage">時給</label></td>
+          <th><label for="hourWage">時給</label></th>
           <td>
             <input type="text" id="hourWage" name="hourWage" value="{{ pays.hourWage }}">
           </td>
         </tr>
         <tr>
-          <td><label for="monthlyWorkHours">仮計算額</label></td>
+          <th><label for="monthlyWorkHours">仮計算額</label></th>
           <td>
             <input type="text" id="monthlyWorkHours" name="monthlyWorkHours" value="{{ pays.monthlyWorkHours }}">
           </td>
         </tr>
         <tr>
-          <td><label for="overtimePay">残業代</label></td>
+          <th><label for="overtimePay">残業代</label></th>
           <td>
             <input type="text" id="overtimePay" name="overtimePay" value="{{ overtimePay }}">
           </td>
         </tr>
       </table>
-      <div class="button-field">
-        <a href="#"><button type="button">戻る</button></a>
+      <div class="back-submit-buttons">
+        <button onclick="history.back()" type="button" class="back-button">
+          戻る
+        </button>
         <button type="submit">作成</button>
       </div>
     </form>

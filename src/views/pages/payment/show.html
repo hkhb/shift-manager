@@ -48,7 +48,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    td {
+    td, th {
       padding: 10px;
       max-width: 300px;
     }
@@ -67,7 +67,7 @@
     button:hover {
       background-color: rgb(107, 196, 247);
     }
-    .previus-payment {
+    .previus-payment-link {
       display: flex;
       justify-content: center;
       margin-bottom: 50px;
@@ -85,27 +85,27 @@
     </div>
     <table class="pays-info">
       <tr>
-        <td>給与形態</td>
+        <th>給与形態</th>
         <td>{{ pays.employmentType }}</td>
       </tr>
       <tr>
-        <td>基本給</td>
+        <th>基本給</th>
         <td>{{ pays.salary }}</td>
       </tr>
       <tr>
-        <td>時給</td>
+        <th>時給</th>
         <td>{{ pays.hourWage }}</td>
       </tr>
       <tr>
-        <td>仮計算額</td>
+        <th>仮計算額</th>
         <td>{{ pays.monthlyWorkHours }}</td>
       </tr>
       <tr>
-        <td>残業代</td>
+        <th>残業代</th>
         <td>{{ pays.overtimePay }}</td>
       </tr>
     </table>
-    <div class="previus-payment">
+    <div class="previus-payment-link">
       <a href="#">過去の支給額</a>
     </div>
   </div>

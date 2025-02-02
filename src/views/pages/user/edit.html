@@ -44,7 +44,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    td {
+    td, th {
       padding: 10px;
       max-width: 300px;
     }
@@ -56,14 +56,12 @@
     width: 100%;
     height: 50px;
   }
-.button-filed {
+.submit-back-buttons {
   display: flex;
-  justify-content: center;
   align-items: center;
   padding: 3px;
   margin: 10px;
   margin-bottom: 50px;
-  justify-content: center;
   justify-content: space-around; 
 }
 button {
@@ -82,7 +80,7 @@ button:hover {
     <h1>ユーザー情報変更</h1>
         <table class="user-edit">
           <tr>
-            <td><label>名前</label></td>
+            <th for="firstName"><label>名前</label></th>
               <!-- {{ if isAdmin }} -->
                 <td>
                   <input type="text" id="firstName" name="firstName" ></input>
@@ -93,7 +91,7 @@ button:hover {
               <!-- {{ /if }} -->
           </tr>
           <tr>
-            <td><label>年齢</label></td>
+            <th for="age"><label>年齢</label></th>
             <!-- {{ if isAdmin }} -->
               <td><input type="number" id="age" name="age" min="0" max="200"></input></td>
             <!-- {{ else }} -->
@@ -101,7 +99,7 @@ button:hover {
             <!-- {{ /if }} -->
           </tr>
           <tr>
-            <td><label>性別</label></td>
+            <th for="gender"><label>性別</label></th>
             <!-- {{ if isAdmin }} -->
               <td>
                 <input type="radio" id="male" name="gender" value="male">
@@ -115,21 +113,23 @@ button:hover {
           </tr>
           <tr>
             <!-- {{ if isAdmin }} -->
-              <td><label>雇用形態</label></td>
-              <td><input type="text" id="employment_type" name="employment_type"></input></td>
+              <th for="employmentType"><label>雇用形態</label></th>
+              <td><input type="text" id="employmentType" name="employmentType"></input></td>
             <!-- {{ else }} -->
               <!-- <td class = "value">{{ pays.employment_type }}</td> -->
             <!-- {{ /if }} -->
           </tr>
           <tr>
-            <td><label>住所</label></td>
+            <th for="address"><label>住所</label></th>
             <td>
               <textarea id="address" name="address" maxlength="60" rows="2" cols="30"></textarea>
             </td>
           </tr>
         </table>
-        <div class="button-filed">
-          <a href="#"><button>戻る</button></a>
+        <div class="submit-back-buttons">
+          <button onclick="history.back()" type="button" class="back-button">
+            戻る
+          </button>
           <button type="submit" class="button">変更</button>
         </div>
       </form>

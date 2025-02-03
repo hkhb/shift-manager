@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fileIndex</title>
+</head>
+<style>
+  .container {
+    width: 800px;
+    padding: 50px;
+    background-color: rgb(222, 246, 246);
+  }
+  h1 {
+    margin: 30px auto 30px 20px;
+  }
+  .add-file-button {
+    display: flex;
+    margin: 30px auto 30px 20px;
+  }
+  table {
+    width: auto;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    background-color: rgb(112, 112, 113);
+  }
+  th, td {
+    max-width: 300px;
+    min-width: 100px;
+    background-color: azure;
+    padding: 5px;
+    text-align: center;
+  }
+  th select {
+    width: auto;
+    font-size: 16px;
+  }
+  .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-content input, .modal-content select {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  button {
+    width: 100px;
+    }
+  button:hover {
+    background-color: rgb(107, 196, 247);
+  }
+</style>
+<body>
+  <div class="container">
+    <h1>ファイル一覧</h1>
+    <div class="add-file-button">
+      <a href="#"><button>ファイル作成</button></a>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <tr>
+            <th>タイトル</th>
+            <th>送信者 <span class="icon" onclick="openModal('searchModal')">🔍</span></th>
+            <th>期限 <span class="icon" onclick="openModal('dateModal')">📅</span></th>
+            <th>タグ <span class="icon" onclick="openModal('tagModal')">📂</span></th>
+            <th>ステータス <span class="icon" onclick="openModal('statusModal')">✅</span></th>
+            <th>削除</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="#">請求書aaaaaaaa</a></td>
+          <td>山田 太郎</td>
+          <td>2024/01/15</td>
+          <td>請求書</td>
+          <td>未完了</td>
+          <td class="delete-icon"><a href="#">🗑️</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- 送信者検索モーダル -->
+    <div id="searchModal" class="modal">
+      <div class="modal-content">
+        <h3>送信者検索</h3>
+        <input type="search" placeholder="名前を入力">
+        <button class="close-button" onclick="closeModal('searchModal')">閉じる</button>
+      </div>
+    </div>
+
+    <!-- 期限選択モーダル -->
+    <div id="dateModal" class="modal">
+      <div class="modal-content">
+        <h3>期限を選択</h3>
+        <input type="date">
+        <button class="close-button" onclick="closeModal('dateModal')">閉じる</button>
+      </div>
+    </div>
+
+    <!-- タグ選択モーダル -->
+    <div id="tagModal" class="modal">
+      <div class="modal-content">
+        <h3>タグを選択</h3>
+        <select>
+          <option>請求書</option>
+          <option>契約書</option>
+          <option>報告書</option>
+        </select>
+        <button class="close-button" onclick="closeModal('tagModal')">閉じる</button>
+      </div>
+    </div>
+
+    <!-- ステータス選択モーダル -->
+    <div id="statusModal" class="modal">
+      <div class="modal-content">
+        <h3>ステータスを選択</h3>
+        <select>
+          <option>完了</option>
+          <option>未完了</option>
+        </select>
+        <button class="close-button" onclick="closeModal('statusModal')">閉じる</button>
+      </div>
+    </div>
+
+    <script>
+      function openModal(id) {
+        document.getElementById(id).style.display = 'flex';
+      }
+
+      function closeModal(id) {
+        document.getElementById(id).style.display = 'none';
+      }
+    </script>
+  </div>
+</body>
+</html>

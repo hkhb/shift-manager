@@ -54,28 +54,28 @@
     <h1>ファイル作成</h1>
     <div class="file-field">
       <form action="#"></form>
-        <label>タイトル</label>
-        <input type="text">
-        <label>タグ</label>
-        <select>
+        <label for="title">タイトル</label>
+        <input type="text" id="title" name="title" required>
+        <label for="tag">タグ</label>
+        <select id="tag" name="tag" required>
           <option>請求書</option>
           <option>契約書</option>
           <option>報告書</option>
         </select>
         <label for="limit">期限</label>
-        <input type="datetime-local" id="limit" >
+        <input type="datetime-local" id="limit" name="limit">
         <label for="file">ファイル</label>
         <input type="file" id="file">
-        <label>送信先</label>
-        <input type="text">
+        <label for="sender">送信先</label>
+        <input type="text" id="sender" name="sender" required>
         <div class="back-submit-buttons">
           <button onclick="history.back()" type="button" class="back-button">
             戻る
           </button>
           <a href="#"><button>作成</button></a>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
 </body>
 </html>

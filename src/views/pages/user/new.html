@@ -50,6 +50,9 @@
       max-width: 300px;
     }
   }
+  .names-field {
+    display: flex;
+  }
   .submit-back-buttons {
     display: flex;
     justify-content: space-around;
@@ -73,8 +76,10 @@
           <tr>
             <th><label for="firstName" >名前</label></th>
             <td>
-              <input type="text" id="firstName" name="firstName" ></input>
-              <input type="text" id="lastName" name="lastName" ></input>
+              <div class="namesField">
+                <input type="text" id="firstName" name="firstName" >
+                <input type="text" id="lastName" name="lastName" >
+              </div>
             </td>
           </tr>
           <tr>
@@ -92,7 +97,7 @@
           </tr>
           <tr>
             <th><label for="employmentType">雇用形態</label></th>
-            <td><input type="text" id="employmentType" name="employmentType"></input></td>
+            <td><input type="text" id="employmentType" name="employmentType"></td>
           </tr>
           <tr>
             <th><label for="address">住所</label></th>

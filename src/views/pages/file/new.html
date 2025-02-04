@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>file-new</title>
+</head>
+<style>
+.container {
+  padding: 50px;
+  background-color: rgb(222, 246, 246);
+}
+h1 {
+  margin: 30px auto 30px 20px;
+}
+.back-submit-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+.back-submit-buttons button {
+  width: 100px;
+}
+.back-submit-buttons button:hover {
+    background-color: rgb(107, 196, 247);
+  }
+.file-field {
+  background-color: white;
+  width: 400px;
+  padding: 50px 100px;
+}
+.file-field label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    color: #555;
+  }
+  .file-field input, .file-field select {
+  background: #F1F8E9;
+  padding: 10px;
+  border-radius: 5px;
+  color: #333;
+  font-size: 16px;
+  width: 100%;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  box-sizing: border-box; /* 幅を統一 */
+}
+</style>
+<body>
+  <div class="container">
+    <h1>ファイル作成</h1>
+    <div class="file-field">
+      <form action="#"></form>
+        <label>タイトル</label>
+        <input type="text">
+        <label>タグ</label>
+        <select>
+          <option>請求書</option>
+          <option>契約書</option>
+          <option>報告書</option>
+        </select>
+        <label for="limit">期限</label>
+        <input type="datetime-local" id="limit" >
+        <label for="file">ファイル</label>
+        <input type="file" id="file">
+        <label>送信先</label>
+        <input type="text">
+        <div class="back-submit-buttons">
+          <button onclick="history.back()" type="button" class="back-button">
+            戻る
+          </button>
+          <a href="#"><button>作成</button></a>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

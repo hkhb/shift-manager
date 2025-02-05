@@ -16,26 +16,24 @@
   }
   .search-field {
     margin: 30px auto 30px 20px;
-    display: flex;
-    align-items: center;
     margin-bottom: 50px;
   }
   table {
-    width: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 50px;
   }
-  tbody {
+  tbody, thead {
         background-color: rgb(112, 112, 113);
   }
   th, td {
     max-width: 200px;
+    min-width: 150px;
+    text-align: center;
     background-color: azure;
-    padding: 5px;
-    min-width: 100px;
+    padding: 10px;
   }
   button {
     width: 100px;
@@ -54,13 +52,15 @@
       </form>
     </div>
     <table>
-      <tbody>
+      <thead>
         <tr>
           <th>名前</th>
-          <th>総労働時間/m</th>
+          <th>総労働時間(h)</th>
           <th>契約</th>
           <th>管理者</th>
         </tr>
+      </thead>
+      <tbody>
         <tr>
           <td><a href="#">山田　太郎</a></td>
           <td>30</td>

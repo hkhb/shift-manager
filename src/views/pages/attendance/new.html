@@ -25,7 +25,7 @@
   h3 {
     text-align: center;
   }
-  .commet-field {
+  .comment-field {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,7 +39,7 @@
       overflow-wrap: break-word;
     }
   }
-  .links-wapper {
+  .action-wrapper {
     display: flex;
     align-items: center;
     margin-bottom: 50px;
@@ -68,30 +68,29 @@
           <tbody>
             <tr>
               <td>
-                <input type="datetime-local" name="clockInDatetime">
+                <input type="datetime-local" id="clockInDatetime" name="clockInDatetime">
               </td>
               <td>
-                <input type="datetime-local" name="clockOutDatetime">
+                <input type="datetime-local" id="clockOutDatetime" name="clockOutDatetime">
               </td>
               <td>
-                <input type="number"  min="0" max="1440" name="breakTime">
+                <input type="number"  min="0" max="1440" id="breakTime" name="breakTime">
               </td>
             </tr>
           </tbody>
         </table>
-          <div class="commet-field">
-            <h3>備考</h3>
-            <textarea name="commet"></textarea>
-          </div>
-          <div class="links-wapper">
-            <button onclick="history.back()" type="button" class="back-button">
-              戻る
-            </button>
-            <button type="submit" class="submit-button">出勤</button>
-          </div>
+        <div class="comment-field">
+          <h3>備考</h3>
+          <textarea name="comment"></textarea>
+        </div>
+        <div class="action-wrapper">
+          <button onclick="history.back()" type="button" class="back-button">
+            戻る
+          </button>
+          <button type="submit" class="submit-button">出勤</button>
+        </div>
       </form>
     </div>
   </div>
-  
 </body>
 </html>

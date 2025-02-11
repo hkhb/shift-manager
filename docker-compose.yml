@@ -3,10 +3,30 @@ version: '3.8'
 services:
   backend:
     build: 
-      context: .
-      dockerfile: Dockerfile
+      context: ./src/backend
+      dockerfile: ../../Dockerfile.backend
     volumes:
-      - .:/app
+      - ./src/backend:/app/src/backend
+      - ./src/backend/package.json:/app/package.json
+      - ./src/backend/package-lock.json:/app/package-lock.json
+      - /app/node_modules
+    ports:
+      - "3001:3000"
+    environment:
+      - NODE_ENV=development
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: ./src/frontend
+      dockerfile: ../../Dockerfile.frontend
+    volumes:
+      - ./src/frontend:/app/src/frontend
+      - ./src/frontend/package.json:/app/package.json
+      - ./src/frontend/package-lock.json:/app/package-lock.json
       - /app/node_modules
     ports:
       - "3000:3000"
@@ -15,7 +35,7 @@ services:
     env_file:
       - .env
     depends_on:
-      - db
+      - backend
 
   db:
     image: postgres:15

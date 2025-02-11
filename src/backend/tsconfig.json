@@ -8,8 +8,8 @@
     "paths": {
       "*": ["node_modules/*"]
     },
-    "rootDir": "src",
-    "outDir": "dist",
+    "rootDir": "src/backend",
+    "outDir": "dist/backend",
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,

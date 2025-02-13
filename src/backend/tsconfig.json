@@ -8,13 +8,13 @@
     "paths": {
       "*": ["node_modules/*"]
     },
-    "rootDir": "src/backend",
-    "outDir": "dist/backend",
+    "rootDir": "./",
+    "outDir": "dist",
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false
   },
-  "include": ["src/**/*"],
+  "include": ["*"],
   "exclude": ["node_modules"]
 }

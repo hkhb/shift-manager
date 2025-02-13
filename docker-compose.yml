@@ -6,9 +6,8 @@ services:
       context: ./src/backend
       dockerfile: ../../Dockerfile.backend
     volumes:
-      - ./src/backend:/app/src/backend
-      - ./src/backend/package.json:/app/package.json
-      - ./src/backend/package-lock.json:/app/package-lock.json
+      - ./src/backend:/app
+      - ./src/backend/dist:/app/dist
       - /app/node_modules
     ports:
       - "3001:3000"
@@ -24,9 +23,7 @@ services:
       context: ./src/frontend
       dockerfile: ../../Dockerfile.frontend
     volumes:
-      - ./src/frontend:/app/src/frontend
-      - ./src/frontend/package.json:/app/package.json
-      - ./src/frontend/package-lock.json:/app/package-lock.json
+      - ./src/frontend:/app
       - /app/node_modules
     ports:
       - "3000:3000"

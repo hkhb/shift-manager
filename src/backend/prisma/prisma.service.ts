@@ -1,5 +1,6 @@
 import { Injectable, OnModuleInit, OnModuleDestroy } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
+import type { PrismaPromise } from '@prisma/client';
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit, OnModuleDestroy {
@@ -21,9 +22,10 @@ export class PrismaService extends PrismaClient implements OnModuleInit, OnModul
   }
 
   // トランザクションのためのヘルパーメソッド
-  async executeInTransaction<T>(fn: (prisma: PrismaClient) => Promise<T>): Promise<T> {
-    return this.$transaction(async (prisma) => {
-      return await fn(prisma);
-    });
+  async executeInTransaction<T>(
+    fn: (tx: Omit<PrismaClient, '$connect' | '$disconnect' | '$on' | '$transaction' | '$use' | '$extends'>) => Promise<T>
+  ): Promise<T> {
+    return this.$transaction(fn);
   }
 }
+

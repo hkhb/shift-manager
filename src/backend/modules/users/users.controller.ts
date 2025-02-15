@@ -2,7 +2,16 @@ import { User } from "@prisma/client";
 import { UsersService } from "./users.service";
 import { Controller, Get, Post, Body } from "@nestjs/common";
 import { UsersRepository } from "./users.repository";
-import { CreateUserType } from "../../../shared/type/create-user.type"
+
+export type CreateUserType = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  age: number;
+  gender: string;
+  address: string;
+  phoneNumber: number;
+}
 
 @Controller('users')
 export class UsersController {

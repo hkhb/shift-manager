@@ -4,9 +4,9 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly userRepository: UsersRepository) {}
+  constructor(private readonly usersRepository: UsersRepository) {}
 
   async findActiveUsers(): Promise<User[]> {
-    return this.userRepository.findAll({where: {isDeleted: false}})
+    return this.usersRepository.findAll({where: {isDeleted: false}})
   }
 }

@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service'
 import { Prisma, User } from '@prisma/client';
-import { CreateUserType } from './users.controller';
+// import { CreateUserType } from './users.controller';
+import { CreateUserDto } from '../shared/create-user.dto';
 
 @Injectable()
 export class UsersRepository {
@@ -28,7 +29,7 @@ export class UsersRepository {
     });
   }
 
-  async createUser(params: CreateUserType): Promise<User>{
+  async createUser(params: CreateUserDto): Promise<User>{
     return await this.prisma.user.create({
       data: {
         firstName: params.firstName,
@@ -39,6 +40,45 @@ export class UsersRepository {
         address: params.address,
         phoneNumber: params.phoneNumber,
         password: params.password
+      }
+    })
+  }
+
+  async updateUser(params: CreateUserDto, id: number):Promise<User | null>{
+
+    console.log("&&&&&&&&&&&&&&&&&id:", id);
+
+    return await this.prisma.user.update({
+      where:{
+        id: id
+      },
+      data: {
+        firstName: params.firstName,
+        lastName: params.lastName,
+        email: params.email,
+        age: params.age,
+        gender: params.gender,
+        address: params.address,
+        phoneNumber: params.phoneNumber,
+        password: params.password
+      }
+    })
+  }
+
+  async showUser(id: number):Promise<User | null>{
+
+    console.log("id: ", id);
+
+    return await this.prisma.user.findUnique({
+      where: {id: id}
+    })
+  }
+
+  async deleteUser(id: number):Promise<User | null>{
+    return await this.prisma.user.update({
+      where: {id: id},
+      data: {
+        isDeleted: true 
       }
     })
   }

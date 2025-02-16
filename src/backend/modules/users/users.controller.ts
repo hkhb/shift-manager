@@ -1,18 +1,8 @@
-import { User } from "@prisma/client";
 import { UsersService } from "./users.service";
-import { Controller, Get, Post, Patch, Delete, Body, Query } from "@nestjs/common";
+import { Controller, Get, Post, Patch, Delete, Body, Query, Param, UsePipes } from "@nestjs/common";
 import { UsersRepository } from "./users.repository";
-
-export type CreateUserType = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  age: number;
-  gender: string;
-  address: string;
-  phoneNumber: number;
-  password: string;
-}
+import { CreateUserDto } from "../shared/create-user.dto";
+import { Prisma, User } from '@prisma/client';
 
 @Controller('users')
 export class UsersController {
@@ -24,7 +14,8 @@ export class UsersController {
   }
 
   @Post('new')
-  async createUser(@Body() createUserData: CreateUserType): Promise<User>{
+  @UsePipes()
+  async createUser(@Body() createUserData: CreateUserDto): Promise<User>{
 
     // バリデーション
     //  OKの場合、処理を続行する
@@ -34,33 +25,45 @@ export class UsersController {
     // ユーザー情報をデータベースに作成する
 
      const newUser = this.usersRepository.createUser(createUserData);
+     console.log(newUser);
+     
      return newUser;
   }
   
   @Patch('edit/:id')
-  async updateUser(@Query('id') id: number){
+  async updateUser(
+    @Param('id') id: string,
+    @Body() updateUserData: CreateUserDto){
 
     // バリデーション
     //  OKの場合、ユーザー情報を更新
     //  NGの場合、エラー
     // データベースを更新
+    const editUser = this.usersRepository.updateUser(updateUserData, parseInt(id));
 
-    return "update";
+    return editUser;
   }
 
   @Get(':id')
-  async showUser(@Query('id') id: number){
-
-    // 同じidのuserとそれに紐づくpayの情報をデータベースから取得
-
-    return "show";
+  async showUser(@Param('id') id: string){
+    const showUser = this.usersRepository.showUser(parseInt(id));
+    console.log(showUser);
+    return showUser;
   }
 
   @Delete(':id')
-  async deleteUser(@Query('id') id: number){
+  async deleteUser(@Param('id') id: string){
 
     //　カラムuser.isDeleteをtrueにする
-
-    return "delete";
+    try {
+      return await this.usersRepository.deleteUser(parseInt(id));
+    } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        return {
+          msg: "Record Not Found",
+          statusCode: "404"
+        };
+      }
+    }
   }
-}
+} 

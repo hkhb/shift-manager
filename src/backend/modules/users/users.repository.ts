@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service'
 import { Prisma, User } from '@prisma/client';
-import { CreateUserType, CreateUserDto } from './users.controller';
+import { CreateUserType } from './users.controller';
 
 @Injectable()
 export class UsersRepository {
@@ -37,7 +37,8 @@ export class UsersRepository {
         age: params.age,
         gender: params.gender,
         address: params.address,
-        phone_number: params.phoneNumber
+        phoneNumber: params.phoneNumber,
+        password: params.password
       }
     })
   }

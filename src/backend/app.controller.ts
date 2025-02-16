@@ -6,16 +6,12 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  @Render('user/index')
   getHello() {
-    return { message: 'Hello world' }; // テンプレートに渡すデータ
-    // return this.appService.getHello();
+    return "Hello";
   }
 
   @Get('payment')
-  @Render('payment/index')
   getPayment() {
-    return { message: 'Hello Payment' }; // テンプレートに渡すデータ
-    // return this.appService.getHello();
+    return "payment"
   }
 }

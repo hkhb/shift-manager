@@ -4,9 +4,6 @@ import { UsersRepository } from "./users.repository";
 import { CreateUserDto } from "../shared/create-user.dto";
 import { UpdateUserDto } from "../shared/update-user.dto";
 import { Prisma, User } from '@prisma/client';
-import { BadRequestException } from '@nestjs/common';
-import { validate } from 'class-validator';
-import { plainToClass } from 'class-transformer';
 
 
 const PASSWORD_BYTE = 5;

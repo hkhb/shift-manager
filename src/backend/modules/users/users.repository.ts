@@ -48,8 +48,6 @@ export class UsersRepository {
 
   async update(params: UpdateUserDto, id: number):Promise<User | null>{
 
-    console.log("&&&&&&&&&&&&&&&&&id:", id);
-
     return await this.prisma.user.update({
       where:{
         id: id
@@ -69,8 +67,6 @@ export class UsersRepository {
   }
 
   async show(id: number):Promise<User | null>{
-
-    console.log("id: ", id);
 
     return await this.prisma.user.findUnique({
       where: {id: id}

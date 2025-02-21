@@ -43,7 +43,7 @@ export class UsersController {
 
   @Get(':id')
   async show(@Param('id') id: string){
-    const showUser = this.usersRepository.show(parseInt(id));
+    const showUser = await this.usersRepository.findById(parseInt(id));
     return showUser;
   }
 

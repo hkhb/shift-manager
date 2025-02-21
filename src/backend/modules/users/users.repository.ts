@@ -12,7 +12,8 @@ export class UsersRepository {
   async findById(id: number): Promise<User | null> {
     return this.prisma.user.findUnique({
       where: { id },
-    });
+      include: { pay: {select: {employmentType: true}} }
+    })
   }
 
   // 全ユーザーを取得（ページネーション付き）
@@ -27,7 +28,7 @@ export class UsersRepository {
       take,
       where,
       orderBy,
-    });
+    })
   }
 
   async create(params: CreateUserDto, password: string): Promise<User>{
@@ -63,13 +64,6 @@ export class UsersRepository {
         password: params.password,
         isInitinalPassword: false
       }
-    })
-  }
-
-  async show(id: number):Promise<User | null>{
-
-    return await this.prisma.user.findUnique({
-      where: {id: id}
     })
   }
 

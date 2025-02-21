@@ -14,10 +14,6 @@ async function bootstrap() {
   }));
 
   await app.listen(3000);
-
-  app.setBaseViewsDir(join(__dirname, 'views/pages')); // テンプレートファイルの場所
-  app.setViewEngine('hbs'); // Handlebarsを使用する場合
-
   console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();

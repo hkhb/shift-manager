@@ -12,8 +12,9 @@
     "outDir": "dist",
     "esModuleInterop": true,
     "experimentalDecorators": true,
+    "useDefineForClassFields": false,
     "emitDecoratorMetadata": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
   },
   "include": ["*"],
   "exclude": ["node_modules"]

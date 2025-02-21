@@ -3,6 +3,7 @@ import { PrismaService } from '../../prisma/prisma.service'
 import { Prisma, User } from '@prisma/client';
 // import { CreateUserType } from './users.controller';
 import { CreateUserDto } from '../shared/create-user.dto';
+import { UpdateUserDto } from '../shared/update-user.dto';
 
 @Injectable()
 export class UsersRepository {
@@ -29,7 +30,7 @@ export class UsersRepository {
     });
   }
 
-  async createUser(params: CreateUserDto): Promise<User>{
+  async create(params: CreateUserDto, password: string): Promise<User>{
     return await this.prisma.user.create({
       data: {
         firstName: params.firstName,
@@ -39,12 +40,13 @@ export class UsersRepository {
         gender: params.gender,
         address: params.address,
         phoneNumber: params.phoneNumber,
-        password: params.password
+        password: password,
+        isInitinalPassword: true
       }
     })
   }
 
-  async updateUser(params: CreateUserDto, id: number):Promise<User | null>{
+  async update(params: UpdateUserDto, id: number):Promise<User | null>{
 
     console.log("&&&&&&&&&&&&&&&&&id:", id);
 
@@ -60,12 +62,13 @@ export class UsersRepository {
         gender: params.gender,
         address: params.address,
         phoneNumber: params.phoneNumber,
-        password: params.password
+        password: params.password,
+        isInitinalPassword: false
       }
     })
   }
 
-  async showUser(id: number):Promise<User | null>{
+  async show(id: number):Promise<User | null>{
 
     console.log("id: ", id);
 
@@ -74,7 +77,7 @@ export class UsersRepository {
     })
   }
 
-  async deleteUser(id: number):Promise<User | null>{
+  async delete(id: number):Promise<User | null>{
     return await this.prisma.user.update({
       where: {id: id},
       data: {

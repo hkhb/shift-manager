@@ -15,7 +15,7 @@ model User {
  age                   Int?
  gender                String?
  address               String?
- phoneNumber           Int?      @map("phone_number")
+ phoneNumber           String?   @map("phone_number")
  isDeleted             Boolean   @default(false) @map("is_deleted")
  isAdmin               Boolean   @default(false) @map("is_admin")
  password              String

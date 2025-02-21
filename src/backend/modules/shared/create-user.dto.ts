@@ -28,6 +28,6 @@ export class CreateUserDto {
   address?: string;
 
   @IsOptional()
-  @IsPhoneNumber()
-  phoneNumber?: number;
+  @IsPhoneNumber('JP')
+  phoneNumber?: string;
 }

@@ -49,7 +49,7 @@ export class UsersController {
     
     // パスワードを生成する
     const passwordBase = userDataForCreate.firstName;
-    const password = await this.usersService.generateInitinalUserPassword(passwordBase, 5)
+    const password = await this.usersService.generateInitialUserPassword(passwordBase, 5)
 
     console.log(password);
 

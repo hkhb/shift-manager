@@ -9,7 +9,7 @@ export class UsersService {
   /**
    * パスワード生成
    */
-  async generateInitinalUserPassword(base: String, length: number): Promise<string> {
+  async generateInitialUserPassword(base: String, length: number): Promise<string> {
     return base + crypto.randomBytes(length).toString('hex');
     
   }

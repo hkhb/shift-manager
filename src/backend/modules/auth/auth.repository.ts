@@ -6,11 +6,17 @@ import { LoginDto } from '../shared/login.dto';
 export class AuthRepository {
   constructor(private prisma: PrismaService){}
   
-  async checkExistUser(loginFormData: LoginDto): Promise<boolean> {
+  async checkExistUser(loginFormData: LoginDto): Promise<string> {
     const user =  await this.prisma.user.findFirst({
       where: {email: loginFormData.email, password: loginFormData.password}
     });
-    return user !== null;
+    if(user?.isAdmin === true){
+      return "admin"
+    }else if(user){
+      return "user"
+    }else{
+      return "notFound"
+    }
   }
 }
 

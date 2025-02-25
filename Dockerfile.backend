@@ -5,6 +5,7 @@ WORKDIR /app
 # 必要なパッケージをインストール
 RUN apt-get update && apt-get install -y \
     openssl \
+    procps \
     && rm -rf /var/lib/apt/lists/*
 
 # package.jsonとpackage-lock.jsonをコピー

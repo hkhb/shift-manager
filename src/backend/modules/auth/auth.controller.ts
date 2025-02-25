@@ -27,4 +27,17 @@ export class AuthController {
           }
         }
   }
+  @Put('resetToInitialPassword')
+  async resetToInitialPassword(@Body() id: number){
+    try {
+      return await this.AuthRepository.resetToInitialPassword(id);
+        } catch (error) {
+          if (error instanceof Prisma.PrismaClientKnownRequestError) {
+            return {
+              msg: "Record Not Found",
+              statusCode: "404"
+            };
+          }
+        }
+  }
 }

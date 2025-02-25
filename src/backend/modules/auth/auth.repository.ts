@@ -24,8 +24,8 @@ export class AuthRepository {
   //　引数　フォームの値(id, newPassword)　戻り値　true | false
   //　idと一致しているユーザーがあるか
   // isInitialPasswordをfalseに
-  // 存在している場合は、true
-  //　違う場合は、false
+  // 成功場合は、true
+  //　失敗場合は、false
 
   async changePassword(changePasswordFormData: ChangePasswordDto): Promise<boolean> {
     const user =  await this.prisma.user.update({
@@ -35,5 +35,20 @@ export class AuthRepository {
       }
     });
       return user? true : false;
+  }
+
+  //　引数　id　戻り値　true | false
+  //　idと一致しているユーザーがあるか
+  // 初期パスワードに変更
+  // 成功場合は、true
+  //　失敗場合は、false
+
+  async resetToInitialPassword(id: number): Promise<boolean>{
+    const initialPassword = "";
+    const user = await this.prisma.user.update({
+      where: {id: id},
+      data: {password: initialPassword}
+    });
+    return user? true:false;
   }
 }

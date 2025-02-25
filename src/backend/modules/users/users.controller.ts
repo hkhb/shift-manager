@@ -1,62 +1,55 @@
 import { UsersService } from "./users.service";
-import { Controller, Get, Post, Patch, Delete, Body, Query, Param, UsePipes } from "@nestjs/common";
+import { Controller, Get, Post, Patch, Delete, Body, Query, Param, UsePipes, Put } from "@nestjs/common";
 import { UsersRepository } from "./users.repository";
 import { CreateUserDto } from "../shared/create-user.dto";
+import { UpdateUserDto } from "../shared/update-user.dto";
 import { Prisma, User } from '@prisma/client';
 
+
+const PASSWORD_BYTE = 5;
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService, private usersRepository: UsersRepository) {}
 
   @Get()
   async findActiveUsers(): Promise<User[]> {
-    return this.usersService.findActiveUsers();
+    return this.usersRepository.findAll({where: {isDeleted: false}})
   }
 
   @Post('new')
   @UsePipes()
-  async createUser(@Body() createUserData: CreateUserDto): Promise<User>{
+  async create(@Body() userDataForCreate: CreateUserDto): Promise<User>{
 
-    // バリデーション
-    //  OKの場合、処理を続行する
-    //  NGの場合、エラー
-    
     // パスワードを生成する
-    // ユーザー情報をデータベースに作成する
+    const passwordBase = userDataForCreate.firstName;
+    const password = await this.usersService.generateInitialUserPassword(passwordBase, PASSWORD_BYTE)
 
-     const newUser = this.usersRepository.createUser(createUserData);
-     console.log(newUser);
-     
+    // ユーザー情報をデータベースに作成する
+     const newUser = this.usersRepository.create(userDataForCreate, password);
      return newUser;
   }
   
   @Patch('edit/:id')
-  async updateUser(
+  async update(
     @Param('id') id: string,
-    @Body() updateUserData: CreateUserDto){
-
-    // バリデーション
-    //  OKの場合、ユーザー情報を更新
-    //  NGの場合、エラー
-    // データベースを更新
-    const editUser = this.usersRepository.updateUser(updateUserData, parseInt(id));
+    @Body() userDateForUpdate: UpdateUserDto){
+    const editUser = this.usersRepository.update(userDateForUpdate, parseInt(id));
 
     return editUser;
   }
 
   @Get(':id')
-  async showUser(@Param('id') id: string){
-    const showUser = this.usersRepository.showUser(parseInt(id));
-    console.log(showUser);
+  async show(@Param('id') id: string){
+    const showUser = await this.usersRepository.findById(parseInt(id));
     return showUser;
   }
 
   @Delete(':id')
-  async deleteUser(@Param('id') id: string){
+  async delete(@Param('id') id: string){
 
     //　カラムuser.isDeleteをtrueにする
     try {
-      return await this.usersRepository.deleteUser(parseInt(id));
+      return await this.usersRepository.delete(parseInt(id));
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
         return {
@@ -66,4 +59,4 @@ export class UsersController {
       }
     }
   }
-} 
+}  

@@ -22,7 +22,7 @@ export class UsersController {
 
     // パスワードを生成する
     const passwordBase = userDataForCreate.firstName;
-    const password = await this.usersService.generateUserPassword(passwordBase, PASSWORD_BYTE)
+    const password = await this.usersService.generateInitialUserPassword(passwordBase, PASSWORD_BYTE)
 
     // ユーザー情報をデータベースに作成する
      const newUser = this.usersRepository.create(userDataForCreate, password);

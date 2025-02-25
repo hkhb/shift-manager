@@ -15,6 +15,7 @@
     "useDefineForClassFields": false,
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false,
+    "typeRoots": ["./node_modules/@types"],
   },
   "include": ["*"],
   "exclude": ["node_modules"]

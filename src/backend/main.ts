@@ -7,6 +7,14 @@ import { ValidationPipe } from '@nestjs/common/pipes/validation.pipe';
 async function bootstrap() {
   // const app = await NestFactory.create(AppModule);
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+
+  // CORSを有効化
+  app.enableCors({
+    origin: 'http://localhost:3000', // フロントエンドのオリジン
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true, // Cookie使用時に必要
+  });
+
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,          // DTOに定義されていないプロパティを削除
     forbidNonWhitelisted: true, // DTOに定義されていないプロパティがあるとエラー

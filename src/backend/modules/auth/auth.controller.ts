@@ -1,7 +1,8 @@
-import { Controller, Post, Body} from "@nestjs/common";
+import { Controller, Post, Body, Put} from "@nestjs/common";
 import { AuthRepository } from "./auth.repository";
 import { LoginDto } from "../shared/login.dto";
-import { User } from "@prisma/client/default";
+import { ChangePasswordDto } from '../shared/changePassword.dto';
+import { Prisma, User } from '@prisma/client';
 
 @Controller('auth')
 export class AuthController {
@@ -13,9 +14,17 @@ export class AuthController {
     return existUser;
   }
   
-  // @Post('changeInitialPassword')
-  // async changeInitialPassword(@Body() changeInitialPasswordFormData: changeInitialPasswordDto): Promise<boolean>{
-  //   const isChangeInitialPassword = await this.AuthRepository.changeInitialPassword(changeInitialPasswordFormData);
-  //   return isChangeInitialPassword
-  // }
+  @Put('changePassword')
+  async changePassword(@Body() changePasswordFormData: ChangePasswordDto){
+    try {
+      return await this.AuthRepository.changePassword(changePasswordFormData);
+        } catch (error) {
+          if (error instanceof Prisma.PrismaClientKnownRequestError) {
+            return {
+              msg: "Record Not Found",
+              statusCode: "404"
+            };
+          }
+        }
+  }
 }

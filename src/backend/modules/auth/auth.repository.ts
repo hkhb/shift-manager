@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service'
 import { LoginDto } from '../shared/login.dto';
+import { ChangePasswordDto } from '../shared/changePassword.dto';
 import { User } from '@prisma/client/default';
 // import * as jwt from 'jsonwebtoken';
 
@@ -17,17 +18,22 @@ export class AuthRepository {
     const user =  await this.prisma.user.findFirst({
       where: {email: loginFormData.email, password: loginFormData.password}
     });
-    // let token: string | null = null;
-    // if(user){
-    //   token = jwt.sign(
-    //     { userId: user.id, admin: user.isAdmin, isitialPassword: user.isInitinalPassword },  // ペイロード部分に必要な情報を含める
-    //   process.env.JWT_SECRET,                // 環境変数からシークレットキーを読み込む
-    //   { expiresIn: '1h' } 
-    //   )
-    // }
-    // return {status: user !== null,
-    //         token: token
-    // };
     return user;
+  }
+
+  //　引数　フォームの値(id, newPassword)　戻り値　true | false
+  //　idと一致しているユーザーがあるか
+  // isInitialPasswordをfalseに
+  // 存在している場合は、true
+  //　違う場合は、false
+
+  async changePassword(changePasswordFormData: ChangePasswordDto): Promise<boolean> {
+    const user =  await this.prisma.user.update({
+      where: {id: changePasswordFormData.id},
+      data:{password: changePasswordFormData.password,
+            isInitinalPassword: false
+      }
+    });
+      return user? true : false;
   }
 }

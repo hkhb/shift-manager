@@ -7,8 +7,14 @@ export class AuthController {
   constructor(private AuthRepository: AuthRepository) {}
 
   @Post('login')
-    async login(@Body() loginFormData: LoginDto): Promise<string> {
-      const isExistUser = await this.AuthRepository.checkExistUser(loginFormData);
-      return isExistUser;
+  async login(@Body() loginFormData: LoginDto): Promise<object> {
+    const existUser = await this.AuthRepository.checkExistUser(loginFormData);
+    return existUser;
+  }
+  
+  @Post('changeInitialPassword')
+    async changeInitialPassword(@Body() changeInitialPasswordFormData: changeInitialPasswordDto): Promise<boolean>{
+      const isChangeInitialPassword = await this.AuthRepository.changeInitialPassword(changeInitialPasswordFormData);
+      return isChangeInitialPassword
     }
-  }   
+  }

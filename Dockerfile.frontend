@@ -1,0 +1,21 @@
+FROM node:18-slim
+
+WORKDIR /app
+
+# package.jsonとpackage-lock.jsonをコピー
+COPY package*.json ./
+
+# 依存関係のインストール
+RUN npm install
+
+# ソースコードをコピー
+COPY . .
+
+# Next.jsアプリケーションのビルド
+RUN npm run build
+
+# 開発サーバーのポートを解放
+EXPOSE 3000
+
+# 開発モードで起動
+CMD ["npm", "run", "dev"]

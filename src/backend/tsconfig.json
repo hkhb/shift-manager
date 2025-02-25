@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES2017",
+    "lib": ["ES2017", "DOM"],
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "*": ["node_modules/*"]
+    },
+    "rootDir": "./",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false,
+    "typeRoots": ["./node_modules/@types"],
+  },
+  "include": ["*"],
+  "exclude": ["node_modules"]
+}

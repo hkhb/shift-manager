@@ -1,0 +1,27 @@
+FROM node:18-slim
+
+WORKDIR /app
+
+# 必要なパッケージをインストール
+RUN apt-get update && apt-get install -y \
+    openssl \
+    procps \
+    && rm -rf /var/lib/apt/lists/*
+
+# package.jsonとpackage-lock.jsonをコピー
+COPY package*.json ./
+
+# 依存関係のインストール
+RUN npm install
+
+# ソースコードをコピー
+COPY . .
+
+# Prismaクライアントを生成
+RUN npx prisma generate
+
+# TypeScriptのコンパイル
+RUN npm run build
+
+# 開発用コマンド
+CMD ["npm", "run", "start:dev"]

@@ -1,21 +1,24 @@
 'use client';
 
-import React, {useEffect} from 'react';
-import UserList from './components/userList';
+import React, { useEffect, useState } from 'react';
+import UserTable from './components/userTable';
 
-// ユーザーデータの型定義
-interface User {
-  id: number;
-  name: string;
-  email: string;
+export type User = {
+  id: number,
+  firstName: string,
+  lastName: string,   
+  email: string,   
+  age: number,
+  gender: string,
+  address: string,
+  phoneNumber: string,   
+  isDeleted: boolean,   
+  isAdmin: boolean,  
+  password: string,
+  isInitinalPassword: boolean,
+  createdAt: Date, 
+  updatedAt: Date,  
 }
-
-// サンプルユーザーデータ
-const users: User[] = [
-  { id: 1, name: '山田太郎', email: 'yamada@example.com' },
-  { id: 2, name: '佐藤花子', email: 'sato@example.com' },
-  { id: 3, name: '鈴木一郎', email: 'suzuki@example.com' },
-];
 
 // TODO
 // 必要なコンポーネント
@@ -29,15 +32,17 @@ const users: User[] = [
 
 export default function UsersPage() {
 
+  const [users, setUsers] = useState<User[]>([]);
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('http://localhost:3001/users/1');
+        const response = await fetch('http://localhost:3001/users/');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        const data = await response.json();
-        console.log(data);
+        const users = await response.json();
+        setUsers(users);
       } catch (error) {
         console.error('Error fetching users:', error);
       }
@@ -49,7 +54,7 @@ export default function UsersPage() {
   return (
     <div>
       <h1>ユーザー一覧</h1>
-      <UserList users={users} />
+      <UserTable users={users} />
     </div>
   );
 }

@@ -1,34 +1,52 @@
 import React from 'react';
 import { User } from '../page';
+import { Table, Thead, Tbody, Tr, Th, Td, Box } from "@chakra-ui/react";
+import Link from 'next/link'
 
 interface UserTableProps {
   users: User[];
 }
 
 const UserTable: React.FC<UserTableProps> = ({ users }: UserTableProps) => {
+
+  const contentProps = {
+    "maxW": "200px",
+    "minW": "100px",
+    "bg": "azure",
+    "textAlign": "center",
+    "color": "black",
+    "p": "10px"
+  }
+
+  const linkProps = {
+    "display": "block",
+    "w": "auto",
+    "h": "auto"
+  }
+
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>名前</th>
-          <th>権限</th>
-          <th>パスワードリセット</th>
-          <th>削除</th>
-        </tr>
-      </thead>
-      <tbody>
+    <Table>
+      <Thead>
+        <Tr>
+          <Th {...contentProps}>名前</Th>
+          <Th {...contentProps}>権限</Th>
+          <Th {...contentProps}>パスワードリセット</Th>
+          <Th {...contentProps}>削除</Th>
+        </Tr>
+      </Thead>
+      <Tbody>
         {
          users.map((user) => (
-          <tr key={user.id}>
-            <td>{user.firstName + user.lastName}</td>
-            <td>{user.isAdmin ? "管理者" : "-"}</td>
-            <td><a href="#">リセット</a></td>
-            <td><a href="#">削除</a></td>  
-          </tr> 
+          <Tr key={user.id}>
+            <Td {...contentProps}>{user.firstName + user.lastName}</Td>
+            <Td {...contentProps}>{user.isAdmin ? "管理者" : "-"}</Td>
+            <Td {...contentProps}><Box as="a" {...linkProps} href="#">リセット</Box></Td>
+            <Td {...contentProps}><Box as="a" {...linkProps} href="#">削除</Box></Td>  
+          </Tr> 
          )) 
         }
-      </tbody>
-    </table>
+      </Tbody>
+    </Table>
   );
 };
 

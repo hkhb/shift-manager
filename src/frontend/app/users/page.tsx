@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import UserTable from './components/userTable';
+import SearchUser from './components/serachUser';
 
 export type User = {
   id: number,
@@ -54,6 +55,7 @@ export default function UsersPage() {
   return (
     <div>
       <h1>ユーザー一覧</h1>
+      <SearchUser />
       <UserTable users={users} />
     </div>
   );

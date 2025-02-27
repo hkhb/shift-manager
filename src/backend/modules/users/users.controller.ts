@@ -1,10 +1,9 @@
 import { UsersService } from "./users.service";
-import { Controller, Get, Post, Patch, Delete, Body, Query, Param, UsePipes, Put } from "@nestjs/common";
+import { Controller, Get, Post, Patch, Delete, Body, Query, Param, UsePipes, Put, Search } from "@nestjs/common";
 import { UsersRepository } from "./users.repository";
 import { CreateUserDto } from "../shared/create-user.dto";
 import { UpdateUserDto } from "../shared/update-user.dto";
 import { Prisma, User } from '@prisma/client';
-
 
 const PASSWORD_BYTE = 5;
 @Controller('users')
@@ -14,6 +13,20 @@ export class UsersController {
   @Get()
   async findActiveUsers(): Promise<User[]> {
     return this.usersRepository.findAll({where: {isDeleted: false}})
+  }
+  
+  @Get('search')
+  async findUsersByName(@Query('searchName') searchName: string): Promise<User[]> {
+    return this.usersRepository.findAll(
+      {
+        where: {
+          isDeleted: false,
+          OR: [
+            { firstName: { contains: searchName } },
+            { lastName: { contains: searchName } }
+          ]
+        }
+      })
   }
 
   @Post('new')

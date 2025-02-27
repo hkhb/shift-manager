@@ -3,7 +3,7 @@ import { User } from '../page';
 import React, { useEffect, useState } from 'react';
 
 type SearchUserProps = {
-  setUser: React.Dispatch<React.SetStateAction<User[]>>;
+  setUsers: React.Dispatch<React.SetStateAction<User[]>>;
 }
 const marginProps = {
   margin: "10px"
@@ -18,14 +18,27 @@ const serachProp = {
 // 挙動:
 //   入力された文字列をbuttonが押された場合、テーブルに結果を反映。
 //   文字列がなかった場合は検索ボタンは非活性
-const SearchUser: React.FC<SearchUserProps> = ({ setUser }: SearchUserProps) => {
+const SearchUser: React.FC<SearchUserProps> = ({ setUsers }: SearchUserProps) => {
 
   const [filterName, setFilterName] = useState<string>("");
 
-  console.log(filterName);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => setFilterName(e.target.value);
-  const handleButtonClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {console.log(e)}
+  const handleButtonClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    const searchUsersByName = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/users/search?searchName=${filterName}`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const users = await response.json();
+        setUsers(users)
+      } catch (error) {
+        console.error('Error fetching users:', error);
+        throw new Error(`'Error fetching users:', ${error}`);
+      }
+    }
+    searchUsersByName();
+  }
 
   return (
     <Box {...serachProp}>

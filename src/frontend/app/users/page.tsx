@@ -56,7 +56,7 @@ export default function UsersPage() {
   return (
     <Box>
       <Heading as="h1">ユーザー一覧</Heading>
-      <SearchUser setUser={setUsers}/>
+      <SearchUser setUsers={setUsers}/>
       <UserTable users={users} />
     </Box>
   );

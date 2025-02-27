@@ -1,6 +1,6 @@
 import { Box, Input, Button} from "@chakra-ui/react";
 import { User } from '../page';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 type SearchUserProps = {
   setUsers: React.Dispatch<React.SetStateAction<User[]>>;
@@ -12,7 +12,7 @@ const serachProp = {
   display: "flex"
 }
 
-const SearchUser: React.FC<SearchUserProps> = ({ setUsers }: SearchUserProps) => {
+const SearchUser: React.FC<SearchUserProps> = ({ setUsers, ...props }: SearchUserProps) => {
 
   const [filterName, setFilterName] = useState<string>("");
 
@@ -35,7 +35,7 @@ const SearchUser: React.FC<SearchUserProps> = ({ setUsers }: SearchUserProps) =>
   }
 
   return (
-    <Box {...serachProp}>
+    <Box {...serachProp} {...props}>
       <Input onChange={handleInputChange} {...marginProps}/>
       <Button isDisabled={filterName === ""} onClick={handleButtonClick} {...marginProps}>検索</Button>
     </Box>

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import UserTable from './components/userTable';
 import SearchUser from './components/serachUser';
-import { Heading, Box } from "@chakra-ui/react";
+import { Heading, Box, Link, Flex, ChakraProvider } from "@chakra-ui/react";
 
 export type User = {
   id: number,
@@ -21,16 +21,6 @@ export type User = {
   createdAt: Date, 
   updatedAt: Date,  
 }
-
-// TODO
-// 必要なコンポーネント
-// 1. タイトル
-// 2．検索マド
-    // 挙動: 名前を入力するとヒットした名前をテーブルに表示(入力値:キーワード（部分検索LIKE '%keyword%'）、出力値:user)
-// 3.　ユーザー作成ボタン
-    // 挙動: ユーザの作成ページに遷移
-// 4.　userのテーブル
-    // 挙動: 受け取ったデータを元にテーブルを作成
 
 export default function UsersPage() {
 
@@ -54,10 +44,19 @@ export default function UsersPage() {
   }, []);
 
   return (
-    <Box>
-      <Heading as="h1">ユーザー一覧</Heading>
-      <SearchUser setUsers={setUsers}/>
-      <UserTable users={users} />
-    </Box>
+    <ChakraProvider>
+      <Box
+        bg="white" 
+        boxShadow="xl" 
+        borderRadius="2xl" 
+        p={6}>
+        <Heading as="h1" size="xl" color="gray">ユーザー一覧</Heading>
+        <Flex direction={"row"} mt={10} alignItems="center" gap={100}>
+          <SearchUser setUsers={setUsers} />
+          <Link href="#" color="blue">ユーザー追加</Link>
+        </Flex>
+        <UserTable users={users} mt={50} />
+      </Box>
+    </ChakraProvider>
   );
 }

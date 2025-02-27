@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import UserTable from './components/userTable';
 import SearchUser from './components/serachUser';
+import { Heading, Box } from "@chakra-ui/react";
 
 export type User = {
   id: number,
@@ -53,10 +54,10 @@ export default function UsersPage() {
   }, []);
 
   return (
-    <div>
-      <h1>ユーザー一覧</h1>
-      <SearchUser />
+    <Box>
+      <Heading as="h1">ユーザー一覧</Heading>
+      <SearchUser setUser={setUsers}/>
       <UserTable users={users} />
-    </div>
+    </Box>
   );
 }

@@ -37,7 +37,7 @@ const UserTable: React.FC<UserTableProps> = ({ users, ...props }: UserTableProps
           {
           users.map((user) => (
             <Tr key={user.id}>
-              <Td {...contentProps}>{user.firstName + user.lastName}</Td>
+              <Td {...contentProps}>{user.lastName + " " + user.firstName}</Td>
               <Td {...contentProps}>{user.isAdmin ? "管理者" : "-"}</Td>
               <Td {...contentProps}><Box as="a" {...linkProps} href="#">リセット</Box></Td>
               <Td {...contentProps}><Box as="a" {...linkProps} href="#">削除</Box></Td>  

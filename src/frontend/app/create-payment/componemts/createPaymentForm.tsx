@@ -31,15 +31,16 @@ const CreatePaymentForm : React.FC = () => {
         if(userFormData){
 
           console.log("userFormData: ", userFormData);
+          const formData = JSON.parse(userFormData); // JSONをオブジェクトに変換
+          formData.age = parseInt(formData.age, 10); 
+          delete formData.employmentType;//BE未対応のため動作確認のため削除
 
           const response = await fetch('http://localhost:3001/users/new', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-              ...JSON.parse(userFormData),
-            }),
+            body: JSON.stringify(formData),
           });
           if (!response.ok) {
             throw new Error('Network response was not ok');

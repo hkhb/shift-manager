@@ -7,7 +7,7 @@ const Tab: React.FC = () => {
       <Box as="a" href="create-user" color="black" mr="auto" ml="auto">
         ユーザー情報作成
       </Box>
-      <Box as="a" href="#" color="black"  mr="auto" ml="auto" bg="rgb(174, 254, 197)">
+      <Box as="a" href="create-payment" color="black"  mr="auto" ml="auto" bg="rgb(174, 254, 197)">
         支払い情報作成
       </Box>
     </Flex>

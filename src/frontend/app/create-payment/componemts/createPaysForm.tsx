@@ -1,23 +1,19 @@
+// TODO:
+// 1. 入力フォームの表示
+// 2. 入力されたデータの管理
+// 3. バリデーションを行う
+// 4.　バックエンドへ送信
 'use client';
 
 import React from 'react';
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { FormLabel, FormControl, Input, Box, RadioGroup, Radio, HStack, FormHelperText, Textarea, Button } from "@chakra-ui/react";
 import BackButton from '@/components/features/backButton';
-import { useRouter } from 'next/navigation';
 
-// TODO:
-// 1. 入力フォームの表示
-// 2. 入力されたデータの管理
-// 3. バリデーションを行う
-// 4. 支払いページに引き継ぐ
-// 5. 前のページへ戻る
-
-const CreateUserForm : React.FC = () => {
+const CreatePaymentForm : React.FC = () => {
   type UserCreateFormInputs = {
     firstName: string;
     lastName: string;
-    email: string;
     age: number;
     gender: string;
     employmentType: string;
@@ -26,18 +22,15 @@ const CreateUserForm : React.FC = () => {
 
   const { register, handleSubmit, control } = useForm<UserCreateFormInputs>({
     defaultValues: {
-      gender: 'male'  // WARN 性別のラジオボタンを表示が出来ない為、性別のデフォルト値を仮で'male'にしています。
+      gender: 'male'  // 性別のラジオボタンを表示が出来ない為、性別のデフォルト値を'male'にしている
     }
   })
-
-  const router = useRouter();
 
   const onSubmit: SubmitHandler<UserCreateFormInputs> = (inputs) => {
     console.log("submit");  
     // セッションストレージにデータを保存する
     sessionStorage.setItem('userFormData', JSON.stringify(inputs));
     console.log('保存されたデータ:', inputs);
-    router.push('../create-payment');
   }
 
   return (
@@ -51,11 +44,6 @@ const CreateUserForm : React.FC = () => {
         <FormLabel>名前(姓)</FormLabel> 
         <Input type='text' {...register("lastName", { required: true })}
         placeholder="last name" />
-      </FormControl>
-      <FormControl isRequired m={10}>
-        <FormLabel>メール</FormLabel> 
-        <Input type='email' {...register("email", { required: true })}
-        placeholder="email" />
       </FormControl>
       <FormControl m={10}>
         <FormLabel>年齢</FormLabel> 

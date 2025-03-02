@@ -16,7 +16,7 @@ import CreatePaymentForm from './componemts/createPaymentForm';
       w={800} 
       m={50} 
       border="1px solid black" 
-      bg="rgb(174, 254, 197)" 
+      bg="#ADFFC5"
       color="black"
     >
       <Tab />

@@ -32,7 +32,7 @@ export default function CreateUserPage() {
       w={800} 
       m={50} 
       border="1px solid black" 
-      bg="rgb(222, 246, 246)" 
+      bg="#cde6e6"
       color="black"
       // p={50}
     >

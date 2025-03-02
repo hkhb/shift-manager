@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import UserTable from './components/userTable';
 import SearchUser from './components/serachUser';
 import { Heading, Box, Link, Flex, ChakraProvider } from "@chakra-ui/react";
+import CreateUserFrom from '../create-user/components/createUserForm';
+import BackButton from '@/components/features/backButton';
 
 export type User = {
   id: number,
@@ -53,7 +55,7 @@ export default function UsersPage() {
         <Heading as="h1" size="xl" color="gray">ユーザー一覧</Heading>
         <Flex direction={"row"} mt={10} alignItems="center" gap={100}>
           <SearchUser setUsers={setUsers} />
-          <Link href="#" color="blue">ユーザー追加</Link>
+          <Link href="../create-user" color="blue">ユーザー追加</Link>
         </Flex>
         <UserTable users={users} mt={50} />
       </Box>

@@ -12,7 +12,7 @@ const serachProp = {
   display: "flex"
 }
 
-const SearchUser: React.FC<SearchUserProps> = ({ setUsers, ...props }: SearchUserProps) => {
+const SearchUser: React.FC<SearchUserProps> = ({ setUsers }: SearchUserProps) => {
 
   const [filterName, setFilterName] = useState<string>("");
 
@@ -35,7 +35,7 @@ const SearchUser: React.FC<SearchUserProps> = ({ setUsers, ...props }: SearchUse
   }
 
   return (
-    <Box {...serachProp} {...props}>
+    <Box {...serachProp}>
       <Input onChange={handleInputChange} {...marginProps}/>
       <Button isDisabled={filterName === ""} onClick={handleButtonClick} {...marginProps}>検索</Button>
     </Box>

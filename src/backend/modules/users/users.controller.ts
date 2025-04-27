@@ -3,7 +3,7 @@ import { Controller, Get, Post, Patch, Delete, Body, Query, Param, UsePipes, Put
 import { UsersRepository } from "./users.repository";
 import { CreateUserDto } from "../shared/create-user.dto";
 import { UpdateUserDto } from "../shared/update-user.dto";
-import { Prisma, User } from '@prisma/client';
+import { Prisma, User, Pay } from '@prisma/client';
 
 const PASSWORD_BYTE = 5;
 @Controller('users')
@@ -31,7 +31,7 @@ export class UsersController {
 
   @Post('new')
   @UsePipes()
-  async create(@Body() userDataForCreate: CreateUserDto): Promise<User>{
+  async create(@Body() userDataForCreate: CreateUserDto): Promise<{user: User, pay: Pay } | null>{
 
     // パスワードを生成する
     const passwordBase = userDataForCreate.firstName;
@@ -45,7 +45,7 @@ export class UsersController {
   @Patch('edit/:id')
   async update(
     @Param('id') id: string,
-    @Body() userDateForUpdate: UpdateUserDto){
+    @Body() userDateForUpdate: UpdateUserDto): Promise<{user: User, pay: Pay } | null>{
     const editUser = this.usersRepository.update(userDateForUpdate, parseInt(id));
 
     return editUser;

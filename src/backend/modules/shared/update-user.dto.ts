@@ -34,4 +34,9 @@ export class UpdateUserDto {
   @IsOptional()
   @IsString()
   password: string;
+
+  @IsString()
+  @MinLength(1)
+  @MaxLength(50)
+  employmentType: string;
 }

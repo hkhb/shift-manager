@@ -17,14 +17,14 @@ export class PaysController {
   }
 
   //pay情報を作成 引数:id
-  @Post('new/:id')
-  @UsePipes(new ValidationPipe())
-  async create(
-    @Param('id') id: string,
-    @Body() payDataForCreate: CreatePayDto): Promise<Pay>{
-    const createPay = await this.paysRepository.create(payDataForCreate, parseInt(id));
-    return createPay
-  }
+  // @Post('new/:id')
+  // @UsePipes(new ValidationPipe())
+  // async create(
+  //   @Param('id') id: string,
+  //   @Body() payDataForCreate: CreatePayDto): Promise<Pay>{
+  //   const createPay = await this.paysRepository.create(payDataForCreate, parseInt(id));
+  //   return createPay
+  // }
 
   //pay情報を更新
   @Patch('edit/:id')

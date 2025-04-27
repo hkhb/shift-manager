@@ -31,7 +31,7 @@ export class UsersController {
 
   @Post('new')
   @UsePipes()
-  async create(@Body() userDataForCreate: CreateUserDto): Promise<{user: User, pay: Pay }>{
+  async create(@Body() userDataForCreate: CreateUserDto): Promise<{user: User, pay: Pay } | null>{
 
     // パスワードを生成する
     const passwordBase = userDataForCreate.firstName;
@@ -45,7 +45,7 @@ export class UsersController {
   @Patch('edit/:id')
   async update(
     @Param('id') id: string,
-    @Body() userDateForUpdate: UpdateUserDto){
+    @Body() userDateForUpdate: UpdateUserDto): Promise<{user: User, pay: Pay } | null>{
     const editUser = this.usersRepository.update(userDateForUpdate, parseInt(id));
 
     return editUser;

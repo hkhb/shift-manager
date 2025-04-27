@@ -30,7 +30,7 @@ export class UsersRepository {
     })
   }
 
-  async create(params: CreateUserDto, password: string): Promise<{user: User, pay: Pay }>{
+  async create(params: CreateUserDto, password: string): Promise<{user: User, pay: Pay }| null>{
     const userData =  await this.prisma.user.create({
       data: {
         firstName: params.firstName,
@@ -54,9 +54,9 @@ export class UsersRepository {
             pay: payData};
   }
 
-  async update(params: UpdateUserDto, id: number):Promise<User | null>{
+  async update(params: UpdateUserDto, id: number):Promise<{user: User, pay: Pay } | null>{
 
-    return await this.prisma.user.update({
+    const userData =  await this.prisma.user.update({
       where:{
         id: id
       },
@@ -72,6 +72,16 @@ export class UsersRepository {
         isInitinalPassword: false
       }
     })
+    const payData = await this.prisma.pay.update({
+      where: {
+        userId: id
+      },
+      data: {
+        employmentType: params.employmentType
+      }
+    })
+    return {user: userData,
+      pay: payData};
   }
 
   async delete(id: number):Promise<User | null>{

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service'
-import { Prisma, User } from '@prisma/client';
+import { Prisma, User, Pay } from '@prisma/client';
 import { CreateUserDto } from '../shared/create-user.dto';
 import { UpdateUserDto } from '../shared/update-user.dto';
 
@@ -30,8 +30,8 @@ export class UsersRepository {
     })
   }
 
-  async create(params: CreateUserDto, password: string): Promise<User>{
-    return await this.prisma.user.create({
+  async create(params: CreateUserDto, password: string): Promise<{user: User, pay: Pay }>{
+    const userData =  await this.prisma.user.create({
       data: {
         firstName: params.firstName,
         lastName: params.lastName,
@@ -44,6 +44,14 @@ export class UsersRepository {
         isInitinalPassword: true
       }
     })
+    const payData = await this.prisma.pay.create({
+      data: {
+        user: { connect: { id: userData.id } } ,
+        employmentType: params.employmentType
+      }
+    })
+    return {user: userData,
+            pay: payData};
   }
 
   async update(params: UpdateUserDto, id: number):Promise<User | null>{

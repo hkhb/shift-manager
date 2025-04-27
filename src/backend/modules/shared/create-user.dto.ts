@@ -30,4 +30,9 @@ export class CreateUserDto {
   @IsOptional()
   @IsPhoneNumber('JP')
   phoneNumber?: string;
+
+  @IsString()
+  @MinLength(1)
+  @MaxLength(50)
+  employmentType: string;
 }
